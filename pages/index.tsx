@@ -15,7 +15,7 @@ const Home: NextPage = () => {
           <div className={styles.heroBackground}>
             <div className={styles.heroBackgroundInner}>
               <Image
-                src="/hero-gradient.png"
+                src="/hero-gradient2.png"
                 width={1390}
                 height={1390}
                 alt="Background gradient from red to blue"
@@ -26,7 +26,7 @@ const Home: NextPage = () => {
           </div>
           <div className={styles.heroAssetFrame}>
             <Image
-              src="/hero-asset.png"
+              src="/hero-asset2.png"
               width={860}
               height={540}
               alt="Hero asset, NFT marketplace"
@@ -38,33 +38,32 @@ const Home: NextPage = () => {
             <div className={styles.heroBody}>
               <h1 className={styles.heroTitle}>
                 <span className={styles.heroTitleGradient}>
-                  Build NFT Marketplaces
+                  Shrümëz Store
                 </span>
                 <br />
-                faster than ever.
+                
               </h1>
               <p className={styles.heroSubtitle}>
                 <Link
                   className={styles.link}
-                  href="https://thirdweb.com"
+                  href="https://mothershipgame.com"
                   target="_blank"
                 >
-                  thirdweb
+                  Journey to the Mothership
                 </Link>{" "}
-                gives you the tools you need to create audited, performant, and
-                flexible NFT marketplaces in <b>hours</b>, <i>not months</i>.
+                Shrümëz is the collectible NFT for the Journey to the Mothership game! 
               </p>
 
               <div className={styles.heroCtaContainer}>
                 <Link className={styles.heroCta} href="/buy">
-                  Get Started
+                  View the Store
                 </Link>
                 <Link
                   className={styles.secondaryCta}
-                  href="https://github.com/thirdweb-example/marketplace-v3"
+                  href="https://www.mothershipgame.com/pages/game"
                   target="_blank"
                 >
-                  GitHub
+                  Play Journey to the Mothership
                 </Link>
               </div>
             </div>

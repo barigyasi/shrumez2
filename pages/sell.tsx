@@ -22,10 +22,10 @@ export default function Sell() {
 
   return (
     <Container maxWidth="lg">
-      <h1>Sell NFTs</h1>
+      <h1>Sell Your Shrümëz</h1>
       {!selectedNft ? (
         <>
-          <p>Select which NFT you&rsquo;d like to sell below.</p>
+          <p>Select which Shrümëz you want to list today!</p>
           <NFTGrid
             data={data}
             isLoading={isLoading}
