@@ -27,7 +27,10 @@ export default function NFTComponent({ nft }: Props) {
   const { data: directListing, isLoading: loadingDirect } =
     useValidDirectListings(marketplace, {
       tokenContract: NFT_COLLECTION_ADDRESS,
-      tokenId: nft.metadata.id,
+     
+      
+       
+      
     });
 
   // 2. Load if the NFT is for auction
@@ -50,9 +53,10 @@ export default function NFTComponent({ nft }: Props) {
         ) : directListing && directListing[0] ? (
           <div className={styles.nftPriceContainer}>
             <div>
-              <p className={styles.nftPriceLabel}>Price in RGT</p>
+              <p className={styles.nftPriceLabel}>Price</p>
               <p className={styles.nftPriceValue}>
-                {`${directListing[0]?.currencyValuePerToken.displayValue}`}
+                {`${directListing[0]?.currencyValuePerToken.displayValue}
+          ${directListing[0]?.currencyValuePerToken.symbol}`}
               </p>
             </div>
           </div>
