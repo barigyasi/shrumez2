@@ -7,7 +7,7 @@ import {
   useValidEnglishAuctions,
   Web3Button,
 } from "@thirdweb-dev/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../../../components/Container/Container";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { NFT, ThirdwebSDK } from "@thirdweb-dev/sdk";
@@ -29,7 +29,7 @@ type Props = {
   contractMetadata: any;
 };
 
-const [randomColor1, randomColor2] = [randomColor(), randomColor()];
+
 
 export default function TokenPage({ nft, contractMetadata }: Props) {
   const [bidValue, setBidValue] = useState<string>();
@@ -47,7 +47,23 @@ export default function TokenPage({ nft, contractMetadata }: Props) {
     useValidDirectListings(marketplace, {
       tokenContract: NFT_COLLECTION_ADDRESS,
       tokenId: nft.metadata.id,
+      
     });
+
+    const { contract: erc1155Contract } = useContract(NFT_COLLECTION_ADDRESS);
+const [owner, setOwner] = useState("");
+
+useEffect(() => {
+  if (erc1155Contract) {
+    const fetchOwner = async () => {
+      const owner = await erc1155Contract.owner.get();
+
+;
+      setOwner(owner);
+    };
+    fetchOwner();
+  }
+}, [erc1155Contract, nft.metadata.id]);
 
   // 2. Load if the NFT is for auction
   const { data: auctionListing, isLoading: loadingAuction } =
@@ -208,24 +224,21 @@ export default function TokenPage({ nft, contractMetadata }: Props) {
             <h1 className={styles.title}>{nft.metadata.name}</h1>
             <p className={styles.collectionName}>Token ID #{nft.metadata.id}</p>
 
-            <Link
-              href={`/profile/${nft.owner}`}
-              className={styles.nftOwnerContainer}
-            >
-              {/* Random linear gradient circle shape */}
-              <div
-                className={styles.nftOwnerImage}
-                style={{
-                  background: `linear-gradient(90deg, ${randomColor1}, ${randomColor2})`,
-                }}
-              />
-              <div className={styles.nftOwnerInfo}>
-                <p className={styles.label}>Current Owner</p>
-                <p className={styles.nftOwnerAddress}>
-                  {nft.owner.slice(0, 8)}...{nft.owner.slice(-4)}
-                </p>
-              </div>
-            </Link>
+            <Link href={`/profile/${owner}`} className={styles.nftOwnerContainer}>
+    {/* Random linear gradient circle shape */}
+    <div
+      className={styles.nftOwnerImage}
+      style={{
+        background: `linear-gradient(90deg, ${randomColor()}, ${randomColor()})`,
+      }}
+    />
+    <div className={styles.nftOwnerInfo}>
+      <p className={styles.label}>Current Owner</p>
+      <p className={styles.nftOwnerAddress}>
+        {owner.slice(0, 8)}...{owner.slice(-4)}
+      </p>
+    </div>
+  </Link>
 
             <div className={styles.pricingContainer}>
               {/* Pricing information */}
