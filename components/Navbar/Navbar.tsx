@@ -41,7 +41,7 @@ export function Navbar() {
             <Link className={styles.link} href={`/profile/${address}`}>
               <Image
                 className={styles.profileImage}
-                src="/user-icon2.png"
+                src="/user-icon3.png"
                 width={42}
                 height={42}
                 alt="Profile"

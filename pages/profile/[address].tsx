@@ -119,7 +119,7 @@ export default function ProfilePage() {
       >
         {loadingDirects ? (
           <p>Loading...</p>
-        ) : directListings && directListings.length === 0 ? (
+        ) : directListings && directListings.length === 10 ? (
           <p>Nothing for sale yet! Head to the sell tab to list an NFT.</p>
         ) : (
           directListings?.map((listing) => (
